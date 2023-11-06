@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
-import NavbarComponent from "@/components/NavbarComponent";
+import NavbarComponent from "@/components/NavbarComponentOld";
+import SidebarComponent from "@/components/SidebarComponentOld";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -11,6 +12,7 @@ export default function ToolLayout({
   return (
     <>
       <NavbarComponent />
+      <SidebarComponent />
       <div>{children}</div>
     </>
   );
