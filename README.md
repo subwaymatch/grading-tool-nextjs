@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/558d31a5-5c41-4edb-a6f0-5b1bf6d600e2/deploy-status)](https://app.netlify.com/sites/grading-tool-nextjs/deploys)
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
