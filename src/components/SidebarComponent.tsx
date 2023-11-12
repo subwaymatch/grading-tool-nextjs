@@ -1,25 +1,31 @@
 import classNames from "classnames";
 import { Sidebar } from "flowbite-react";
-// import { useSidebarContext } from "../context/SidebarContext";
+import { useEffect } from "react";
 import useUiStore from "@/store/useUiStore";
 
 function SidebarComponent({ children }: { children: React.ReactNode }) {
-  // const { isOpenOnSmallScreens: isSidebarOpenOnSmallScreens } =
-  //   useSidebarContext();
-  const isOpenOnSmallScreens = useUiStore(
-    (state) => state.isOpenOnSmallScreens
-  );
-  const isPageWithSidebar = useUiStore((state) => state.isPageWithSidebar);
-  const setOpenOnSmallScreens = useUiStore(
-    (state) => state.setOpenOnSmallScreens
-  );
+  const isSidebarOpen = useUiStore((state) => state.isSidebarOpen);
+  const setIsSidebarOpen = useUiStore((state) => state.setIsSidebarOpen);
+
+  const location = isBrowser() ? window.location.pathname : "/";
+
+  // close sidebar on page change on mobile
+  useEffect(() => {
+    setIsSidebarOpen(false);
+  }, [location]);
+
+  // close sidebar on mobile tap inside main content
+
+  function isBrowser(): boolean {
+    return typeof window !== "undefined";
+  }
 
   return (
     <div
       className={classNames(
         "fixed overflow-auto top-0 h-screen z-10 lg:sticky lg:!block",
         {
-          hidden: !isOpenOnSmallScreens,
+          hidden: !isSidebarOpen,
         }
       )}
     >

@@ -1,15 +1,13 @@
 import { create } from "zustand";
 
 type UiState = {
-  isOpenOnSmallScreens: boolean;
-  isPageWithSidebar: boolean;
-  setOpenOnSmallScreens: (v: boolean) => void;
+  isSidebarOpen: boolean;
+  setIsSidebarOpen: (v: boolean) => void;
 };
 
 const useUiStore = create<UiState>((set) => ({
-  isOpenOnSmallScreens: false,
-  isPageWithSidebar: false,
-  setOpenOnSmallScreens: (v) => set(() => ({ isOpenOnSmallScreens: v })),
+  isSidebarOpen: true,
+  setIsSidebarOpen: (v) => set(() => ({ isSidebarOpen: v })),
 }));
 
 export default useUiStore;
