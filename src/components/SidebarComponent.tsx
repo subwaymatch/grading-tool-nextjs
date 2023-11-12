@@ -11,6 +11,7 @@ function SidebarComponent({ children }: { children: React.ReactNode }) {
 
   // close sidebar on page change on mobile
   useEffect(() => {
+    console.log(`SidebarComponent.useEffect([location]), location=${location}`);
     setIsSidebarOpen(false);
   }, [location]);
 
@@ -20,17 +21,16 @@ function SidebarComponent({ children }: { children: React.ReactNode }) {
     return typeof window !== "undefined";
   }
 
-  return (
+  return isSidebarOpen ? (
     <div
       className={classNames(
-        "fixed overflow-auto top-0 h-screen z-10 lg:sticky lg:!block",
-        {
-          hidden: !isSidebarOpen,
-        }
+        "fixed overflow-auto top-0 h-screen z-10 lg:sticky lg:!block"
       )}
     >
       <Sidebar>{children}</Sidebar>
     </div>
+  ) : (
+    <></>
   );
 }
 

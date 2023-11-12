@@ -1,6 +1,5 @@
 import { DarkThemeToggle, Navbar } from "flowbite-react";
 import Image from "next/image";
-// import { useSidebarContext } from "../context/SidebarContext";
 import useUiStore from "@/store/useUiStore";
 
 export default function NavbarComponent() {

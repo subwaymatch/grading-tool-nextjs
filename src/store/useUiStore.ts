@@ -7,7 +7,11 @@ type UiState = {
 
 const useUiStore = create<UiState>((set) => ({
   isSidebarOpen: true,
-  setIsSidebarOpen: (v) => set(() => ({ isSidebarOpen: v })),
+  setIsSidebarOpen: (v) =>
+    set(() => {
+      console.log(`setIsSidebarOpen, v=${v}`);
+      return { isSidebarOpen: v };
+    }),
 }));
 
 export default useUiStore;

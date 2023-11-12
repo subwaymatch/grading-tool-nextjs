@@ -61,6 +61,7 @@ import {
 } from "react-icons/hi";
 import Header from "@/components/NavbarComponent";
 import SidebarComponent from "@/components/SidebarComponent";
+import useUiStore from "@/store/useUiStore";
 
 export default function Index(): JSX.Element {
   return (
@@ -79,6 +80,8 @@ export default function Index(): JSX.Element {
 }
 
 function ActualSidebar(): JSX.Element {
+  const isSidebarOpen = useUiStore((state) => state.isSidebarOpen);
+
   return (
     <SidebarComponent>
       <Sidebar.Items>
