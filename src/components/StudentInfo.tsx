@@ -34,7 +34,7 @@ const StudentInfo = ({ students }) => {
           <TextInput
             id="first-name"
             type="text"
-            value={students[currentIndex]?.name || ""}
+            value={students[currentIndex]?.firstName || ""}
             readOnly
           />
         </div>
@@ -48,7 +48,7 @@ const StudentInfo = ({ students }) => {
           <TextInput
             id="last-name"
             type="text"
-            value={students[currentIndex]?.name || ""}
+            value={students[currentIndex]?.lastName || ""}
             readOnly
           />
         </div>
@@ -62,7 +62,7 @@ const StudentInfo = ({ students }) => {
           <TextInput
             id="net-id"
             type="text"
-            value={students[currentIndex]?.username || ""}
+            value={students[currentIndex]?.netId || ""}
             readOnly
           />
         </div>

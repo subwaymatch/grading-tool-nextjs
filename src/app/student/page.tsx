@@ -19,24 +19,24 @@ const TestUser = () => {
     const fetchData = async () => {
       const res = await fetch("https://jsonplaceholder.typicode.com/users");
       const studentinfos = await res.json();
-      setStudentinfos(studentinfos);
+      const updatedStudentInfo = studentinfos.map((studentinfo) => {
+        const [firstName, ...lastNameParts] = studentinfo.name.split(" ");
+        const lastName = lastNameParts.join(" ");
+        const netId = studentinfo.email.split("@")[0];
+
+        return {
+          ...studentinfo,
+          firstName,
+          lastName,
+          netId,
+        };
+      });
+
+      setStudentinfos(updatedStudentInfo);
     };
 
     fetchData().catch(console.error);
   }, []);
-
-  const updatedStudentInfo = studentinfos.map((studentinfo) => {
-    const [firstName, ...lastNameParts] = studentinfo.name.split(" ");
-    const lastName = lastNameParts.join(" ");
-    const netId = studentinfo.email.split("@")[0];
-
-    return {
-      ...studentinfo,
-      firstName,
-      lastName,
-      netId,
-    };
-  });
 
   // console.log(updatedStudentInfo);
   return (
