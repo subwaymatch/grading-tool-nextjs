@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { Table } from "flowbite-react";
@@ -11,7 +12,7 @@ interface Student {
 
 import StudentInfo from "@/components/StudentInfo";
 
-const TestUser = async () => {
+const TestUser = () => {
   const [studentinfos, setStudentinfos] = useState([]);
 
   useEffect(() => {

@@ -4,10 +4,6 @@ import { use, useEffect, useState } from "react";
 const StudentInfo = ({ students }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  useEffect(() => {
-    console.log("Students:", students);
-  }, [students]);
-
   const navigateStudents = (direction: string) => {
     if (direction == "next" && currentIndex < students.length - 1) {
       setCurrentIndex(currentIndex + 1);
@@ -15,6 +11,10 @@ const StudentInfo = ({ students }) => {
       setCurrentIndex(currentIndex - 1);
     }
   };
+
+  useEffect(() => {
+    console.log("Students:", students);
+  }, [students]);
 
   useEffect(() => {
     console.log("Current Index:", currentIndex);
@@ -34,7 +34,7 @@ const StudentInfo = ({ students }) => {
           <TextInput
             id="first-name"
             type="text"
-            value={students[currentIndex]?.firstName || ""}
+            value={students[currentIndex]?.name || ""}
             readOnly
           />
         </div>
@@ -48,7 +48,7 @@ const StudentInfo = ({ students }) => {
           <TextInput
             id="last-name"
             type="text"
-            value={students[currentIndex]?.lastName || ""}
+            value={students[currentIndex]?.name || ""}
             readOnly
           />
         </div>
@@ -62,7 +62,7 @@ const StudentInfo = ({ students }) => {
           <TextInput
             id="net-id"
             type="text"
-            value={students[currentIndex]?.netId || ""}
+            value={students[currentIndex]?.username || ""}
             readOnly
           />
         </div>
