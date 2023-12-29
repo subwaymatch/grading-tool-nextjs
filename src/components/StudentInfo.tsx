@@ -1,24 +1,26 @@
 import { Button, TextInput } from "flowbite-react";
-import { use, useEffect, useState } from "react";
+import { useState } from "react";
 
-const StudentInfo = ({ students }) => {
+const StudentInfo = ({ allStudents }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const navigateStudents = (direction: string) => {
-    if (direction == "next" && currentIndex < students.length - 1) {
-      setCurrentIndex(currentIndex + 1);
-    } else if (direction == "prev" && currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-    }
-  };
+  //   const [currentIndex, setCurrentIndex] = useState(0);
 
-  useEffect(() => {
-    console.log("Students:", students);
-  }, [students]);
+  // const navigateStudents = (direction: string) => {
+  //   if (direction == "next" && currentIndex < students.length - 1) {
+  //     setCurrentIndex(currentIndex + 1);
+  //   } else if (direction == "prev" && currentIndex > 0) {
+  //     setCurrentIndex(currentIndex - 1);
+  //   }
+  // };
 
-  useEffect(() => {
-    console.log("Current Index:", currentIndex);
-  }, [currentIndex]);
+  // useEffect(() => {
+  //   console.log("Students:", students);
+  // }, [students]);
+
+  // useEffect(() => {
+  //   console.log("Current Index:", currentIndex);
+  // }, [currentIndex]);
 
   return (
     <div className="flex space-x-4">
@@ -34,8 +36,7 @@ const StudentInfo = ({ students }) => {
           <TextInput
             id="first-name"
             type="text"
-            value={students[currentIndex]?.firstName || ""}
-            readOnly
+            value={allStudents[currentIndex]?.firstName || ""}
           />
         </div>
         <div className="mb-4">
@@ -48,8 +49,7 @@ const StudentInfo = ({ students }) => {
           <TextInput
             id="last-name"
             type="text"
-            value={students[currentIndex]?.lastName || ""}
-            readOnly
+            value={allStudents[currentIndex]?.lastName || ""}
           />
         </div>
         <div className="mb-4">
@@ -62,13 +62,27 @@ const StudentInfo = ({ students }) => {
           <TextInput
             id="net-id"
             type="text"
-            value={students[currentIndex]?.netId || ""}
-            readOnly
+            value={allStudents[currentIndex]?.netId || ""}
           />
         </div>
         <div className="flex justify-between">
-          <Button onClick={() => navigateStudents("prev")}>←</Button>
-          <Button onClick={() => navigateStudents("next")}>→</Button>
+          <Button
+            onClick={() => {
+              if (currentIndex > 0) {
+                setCurrentIndex(currentIndex - 1);
+              }
+            }}
+          >
+            ←
+          </Button>
+          <Button
+            onClick={() => {
+              if (currentIndex < allStudents.length - 1)
+                setCurrentIndex(currentIndex + 1);
+            }}
+          >
+            →
+          </Button>
         </div>
       </div>
       <div>
