@@ -4,24 +4,6 @@ import { useState } from "react";
 const StudentInfo = ({ allStudents }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  //   const [currentIndex, setCurrentIndex] = useState(0);
-
-  // const navigateStudents = (direction: string) => {
-  //   if (direction == "next" && currentIndex < students.length - 1) {
-  //     setCurrentIndex(currentIndex + 1);
-  //   } else if (direction == "prev" && currentIndex > 0) {
-  //     setCurrentIndex(currentIndex - 1);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   console.log("Students:", students);
-  // }, [students]);
-
-  // useEffect(() => {
-  //   console.log("Current Index:", currentIndex);
-  // }, [currentIndex]);
-
   return (
     <div className="flex space-x-4">
       <div>

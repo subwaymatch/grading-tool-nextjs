@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect } from "react";
-import { useState } from "react";
 import { Table } from "flowbite-react";
 
 interface Student {
@@ -245,7 +244,6 @@ const TestUser = () => {
       },
     },
   ];
-  // const [studentinfos, setStudentinfos] = useState([]);
 
   const updatedStudentInfo = res.map((studentinfo) => {
     const [firstName, ...lastNameParts] = studentinfo.name.split(" ");
@@ -260,12 +258,6 @@ const TestUser = () => {
     };
   });
 
-  // setStudentinfos(updatedStudentInfo);
-
-  //     fetchData().catch(console.error);
-  //   }, []);
-
-  // console.log(updatedStudentInfo);
   return (
     <div className="flex">
       <Table>
