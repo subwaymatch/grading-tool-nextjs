@@ -16,8 +16,10 @@ model User {
   firstName   String
   lastName    String
   admin       Boolean    @default(false)
-  class       Class[] //@relation("UserClasses")
-  role   UserRole[]
+  class       Class[]
+  role        UserRole[]
+  Rubric      Rubric[]
+  Comments    Comments[]
 }
 
 enum Role {
@@ -37,13 +39,45 @@ model UserRole {
 }
 
 model Class {
-  classId Int @id @default(autoincrement())
-  className   String @unique
+  id          Int      @id @default(autoincrement())
+  className   String   @unique
   school      String
-  userProfile User[] //@relation(fields: [userId], references: [anonymousId])
+  userProfile User[]
+  rubric      Rubric[]
 }
 
 model Rubric {
-  id Int @id @default(autoincrement())
-  
+  id      Int   @id @default(autoincrement())
+  classId Int
+  class   Class @relation(fields: [classId], references: [id])
+
+  assignment          String
+  questionName        String
+  questionNumber      Int
+  questionPart        String
+  questionDescription String
+  maxDeduction        Float
+  questionComment     Comments[]
+  solution            String?
+  images              String?
+
+  dateCreated     DateTime
+  creator         User     @relation(fields: [userAnonymousId], references: [anonymousId])
+  userAnonymousId String
 }
+
+model Comments {
+  id        Int    @id @default(autoincrement())
+  Rubric    Rubric @relation(fields: [rubricId], references: [id])
+  rubricId  Int
+  order     Int
+  deduction Float
+  comment   String
+
+  dateCreated     DateTime
+  creator         User     @relation(fields: [userAnonymousId], references: [anonymousId])
+  userAnonymousId String
+}
+
+/// 1. Log, how many comments are used, student comments received/deductions, grader history: comment give out, ...
+// 2. Log, grader behavior (revision, click..)
